@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>      // std::ifstream
 
 #ifndef HARL_HPP
 #define HARL_HPP

@@ -7,9 +7,9 @@ int main( void ) {
 
 	while (1)
     {
-        std::cout << "Enter a level: (debug, info, warning, error): ";
-        std::cin >> input;
-		if (input.compare("exit") == 0)
+        std::cout << "Enter a level: (DEBUG, INFO, WARNING, ERROR): ";
+        std::getline(std::cin, input);
+		if (input.compare("EXIT") == 0 || (std::cin.eof()))
 			break ;
         harl.complain(input);
     };

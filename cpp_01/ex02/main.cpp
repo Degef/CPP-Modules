@@ -7,7 +7,7 @@ int main() {
     std::string &stringREF = string;
 
     // Printing memory addresses
-    std::cout << "Memory address helf by string: 		 " << &string << std::endl;
+    std::cout << "Memory address held by string: 		 " << &string << std::endl;
     std::cout << "Memory address held by stringPTR: 	 " << stringPTR << std::endl;
     std::cout << "Memory address held by stringREF: 	 " << &stringREF << std::endl;
 

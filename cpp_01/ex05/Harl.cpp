@@ -21,9 +21,9 @@ void Harl::error() {
 
 void Harl::complain(std::string level){
 	const int kLevels = 4;
-	std::string complainLevels[kLevels] = {"debug", "info", "warning",	"error"};
+	std::string complainLevels[kLevels] = {"DEBUG", "INFO", "WARNING",	"ERROR"};
 
-	t_func functions[kLevels] = {&Harl::debug, &Harl::debug, &Harl::info, &Harl::warning};
+	t_func functions[kLevels] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	for (int i = 0; i < kLevels; i++) {
 		if (complainLevels[i].compare(level) == 0) {
@@ -31,5 +31,5 @@ void Harl::complain(std::string level){
 			return;
 		}
 	}
-	std::cerr << "Error: Invalid complain level" << std::endl;
+	std::cerr << "Error: Invalid complain level, (DEBUG, INFO, WARNING, ERROR)" << std::endl;
 }

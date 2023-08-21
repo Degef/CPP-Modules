@@ -1,9 +1,9 @@
-TARGET = zombieHorde
+TARGET = harlFilter
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Zombie.cpp zombieHorde.cpp
+SRCS = main.cpp Harl.cpp 
 
 all: $(TARGET)
 
@@ -13,5 +13,3 @@ $(TARGET): $(SRCS)
 
 clean:
 	rm -f $(TARGET)
-
-re: clean all

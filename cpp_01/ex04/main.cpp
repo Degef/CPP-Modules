@@ -3,6 +3,8 @@
 #include <string>
 #include <cstring>
 
+// If std::string::find does not find any more occurrences of s1, it returns std::string::npos 
+// (which is a special constant value indicating "no position").
 void replaceInString(std::string& content, const std::string& s1, const std::string& s2) {
     size_t pos = 0;
     while ((pos = content.find(s1, pos)) != std::string::npos) {
@@ -11,41 +13,43 @@ void replaceInString(std::string& content, const std::string& s1, const std::str
     }
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
-        return 1;
-    }
-
-    std::string filename = argv[1];
-    std::string s1 = argv[2];
-    std::string s2 = argv[3];
-
-    std::ifstream inputFile(filename.c_str());
+int replace(std::string fileName, std::string s1, std::string s2)
+{
+    std::ifstream inputFile(fileName);
     if (!inputFile) {
-        std::cerr << "Error: Cannot open input file: " << filename << std::endl;
+        std::cerr << "Error: Cannot open input file: " << fileName << std::endl;
         return 1;
     }
-
-    std::string fileContent;
+	
+	std::string fileContent;
     char c;
     while (inputFile.get(c)) {
         fileContent += c;
     }
     inputFile.close();
-
     replaceInString(fileContent, s1, s2);
-
-    std::ofstream outputFile((filename + ".replace").c_str());
+	
+	std::ofstream outputFile((fileName + ".replace"));
     if (!outputFile) {
-        std::cerr << "Error: Cannot create output file: " << filename + ".replace" << std::endl;
+        std::cerr << "Error: Cannot create output file: " << fileName + ".replace" << std::endl;
         return 1;
     }
 
     outputFile << fileContent;
     outputFile.close();
 
-    std::cout << "Replacement complete. Output written to " << filename + ".replace" << std::endl;
-
+    std::cout << "Replacement complete. Output written to " << fileName + ".replace" << std::endl;
     return 0;
+}
+
+int main(int argc, char* argv[]) {
+
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+	if (replace(argv[1], argv[2], argv[3]))
+		return EXIT_FAILURE;
+	return EXIT_SUCCESS;
 }
