@@ -1,6 +1,6 @@
 TARGET = ClapTrap
 
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp ClapTrap.cpp 
@@ -13,3 +13,5 @@ $(TARGET): $(SRCS)
 
 clean:
 	rm -f $(TARGET)
+
+re: clean all
