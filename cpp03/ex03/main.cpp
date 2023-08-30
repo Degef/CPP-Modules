@@ -11,4 +11,3 @@ int main() {
 	diamond.highFivesGuys();
     return 0;
 }
-
