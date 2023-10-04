@@ -55,7 +55,9 @@ int Form::getGradeToExecute() const {
 
 void Form::beSigned(Bureaucrat& bureaucrat) {
 	std::cout << "Trying to sign form " << _name << " with bureaucrat " << bureaucrat.getName() << std::endl;
-	if ( _gradeToSign <= bureaucrat.getGrade())
+	if (_signed)
+		throw Form::AlreadySignedException();
+	if ( _gradeToSign < bureaucrat.getGrade())
 		throw Form::GradeTooLowException();
 	std::cout << G << bureaucrat.getName() << " signed " << _name << reset << std::endl;
 	_signed = true;
