@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/04 14:54:32 by Degef             #+#    #+#             */
+/*   Updated: 2023/10/04 16:21:45 by Degef            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef Bureaurat_HPP
 #define Bureaurat_HPP
 
@@ -10,6 +22,8 @@ const std::string R = "\033[31m";
 const std::string G = "\033[32m";
 const std::string Y = "\033[33m";
 const std::string B = "\033[34m";
+const std::string M = "\033[35m";
+const std::string C = "\033[36m";
 
 class AForm;
 
