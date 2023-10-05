@@ -8,11 +8,6 @@ int main() {
 	} catch (std::exception& e) {
 		std::cerr << R << "Exception: " << e.what() << reset << std::endl;
 	}
-	// catch (const Form::GradeTooHighException& e) {
-	// 	std::cerr << R << "Exception: " << e.what() << reset << std::endl;
-	// } catch (const Form::GradeTooLowException& e) {
-	// 	std::cerr << R << "Exception: " << e.what() << reset << std::endl;
-	// }
 	std::cout << std::endl;
 
 	std::cout << Y << "#2 Test: Signing a form with a bureaucrat" << reset << std::endl;
@@ -27,11 +22,5 @@ int main() {
 	catch (std::exception& e) {
 		std::cerr << R << "Exception: " << e.what() << reset << std::endl;
 	}
-	// catch (const Form::GradeTooHighException& e) {
-	// 	std::cerr << R << "Exception: " << e.what() << reset << std::endl;
-	// }
-	// catch (const Form::GradeTooLowException& e) {
-	// 	std::cerr << R << "Exception: " << e.what() << reset << std::endl;
-	// }
     return 0;
 }

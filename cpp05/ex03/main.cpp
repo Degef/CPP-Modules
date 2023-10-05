@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:59 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/05 14:49:11 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 11:04:25 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void makeTestes(std::string formName, std::string target, Bureaucrat b1)
 	try
 	{
 		Intern someRandomIntern = Intern();
-		// Bureaucrat b1 = Bureaucrat("B1", 7);
 		AForm* rrf;
 		
 		rrf = someRandomIntern.makeForm(formName, target);
