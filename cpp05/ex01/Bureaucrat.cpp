@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "./includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -28,7 +28,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << M << "Bureaucrat destructor called" << reset << std::endl;
 }
 
 std::string Bureaucrat::getName() const {
@@ -67,19 +67,19 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 }
 
 void Bureaucrat::signForm(Form &form) {
-	if (form.getGradeToSign() < _grade) {
+	try {
+		form.beSigned(*this);
+	}
+	catch (std::exception &e) {
 		std::cout << R << _name << " couldn’t sign " << form.getName() << 
-		" because his grade is too low" << reset << std::endl;
+		" because " << e.what() << reset << std::endl;
 	}
-	else {
-		// std::cout << G << _name << " signed " << form.getName() << reset << std::endl;
-		try {
-			form.beSigned(*this);
-			std::cout << G << _name << " signed " << form.getName() << reset << std::endl;
-		}
-		catch (std::exception &e) {
-			std::cout << R << _name << " couldn’t sign " << form.getName() << 
-			" because " << e.what() << reset << std::endl;
-		}
-	}
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is too high! highest grade is 1";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is too low! lowest grade is 150";
 }

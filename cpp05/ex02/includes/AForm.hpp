@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:27 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/04 14:54:28 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 13:59:12 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,17 @@ public:
 
 	class GradeTooLowException : public std::exception {
 	public:
-		virtual const char* what() const throw() {
-			return "Grade is too low!";
-		}
+		virtual const char* what() const throw();
 	};
 
 	class AlreadySignedException : public std::exception {
 	public:
-		virtual const char* what() const throw() {
-			return "Form is already signed!";
-		}
+		virtual const char* what() const throw();
 	};
 
 	class NotSignedException : public std::exception {
 	public:
-		virtual const char* what() const throw() {
-			return "Can't be executed because form is not signed!";
-		}
+		virtual const char* what() const throw();
 	};
 
 	std::string		getName() const;

@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "./includes/Bureaucrat.hpp"
 
 void createBureaucrat(std::string name, int grade)
 {
@@ -14,36 +14,36 @@ void createBureaucrat(std::string name, int grade)
 }
 
 int main() {
-	std::cout << Y << "#1 Test: default constructor" << reset << std::endl;
-	{
-		Bureaucrat bureaucrat;
-		std::cout << bureaucrat;
-	}
-	std::cout << std::endl;
+	// std::cout << Y << "#1 Test: default constructor" << reset << std::endl;
+	// {
+	// 	Bureaucrat bureaucrat;
+	// 	std::cout << bureaucrat;
+	// }
+	// std::cout << std::endl;
 	
-	std::cout << Y << "#2 Test: constructor with parameters" << reset << std::endl;
-	createBureaucrat("Tony", 1);
-	createBureaucrat("Jesse", 0);
-	std::cout << std::endl;
+	// std::cout << Y << "#2 Test: attributed constructor" << reset << std::endl;
+	// createBureaucrat("Tony", 1);
+	// createBureaucrat("Jesse", 0);
+	// std::cout << std::endl;
 
-	std::cout << Y << "#3 Test: copy constructor" << reset << std::endl;
-	{
-		Bureaucrat bureaucrat("Tony", 1);
-		Bureaucrat bureaucrat2(bureaucrat);
-		std::cout << bureaucrat2;
-	}
-	std::cout << std::endl;
-	std::cout << Y << "#4 Test: copy assignment operator overload" << reset << std::endl;
-	{
-		Bureaucrat bureaucrat("Tony", 1);
-		Bureaucrat bureaucrat2("Jesse", 150);
-		std::cout << bureaucrat2;
-		bureaucrat2 = bureaucrat;
-		std::cout << bureaucrat2;
-	}
-	std::cout << std::endl;
+	// std::cout << Y << "#3 Test: copy constructor" << reset << std::endl;
+	// {
+	// 	Bureaucrat bureaucrat("Tony", 1);
+	// 	Bureaucrat bureaucrat2(bureaucrat);
+	// 	std::cout << bureaucrat2;
+	// }
+	// std::cout << std::endl;
+	// std::cout << Y << "#4 Test: copy assignment operator overload" << reset << std::endl;
+	// {
+	// 	Bureaucrat bureaucrat("Tony", 1);
+	// 	Bureaucrat bureaucrat2("Jesse", 150);
+	// 	std::cout << bureaucrat2;
+	// 	bureaucrat2 = bureaucrat;
+	// 	std::cout << bureaucrat2;
+	// }
+	// std::cout << std::endl;
 
-	std::cout << Y << "#5 Test: IncrementGrade" << reset << std::endl;
+	std::cout << Y << "#1 Test: IncrementGrade" << reset << std::endl;
 	{
 		Bureaucrat bureaucrat("Tony", 2);
 		try
@@ -60,7 +60,7 @@ int main() {
 	}
 	std::cout << std::endl;
 
-	std::cout << Y << "#6 Test: DecrementGrade" << reset << std::endl;
+	std::cout << Y << "#2 Test: DecrementGrade" << reset << std::endl;
 	{
 		Bureaucrat bureaucrat("Jesse", 149);
 		try

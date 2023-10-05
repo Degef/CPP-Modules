@@ -3,13 +3,17 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
-// ANSI escape codes for text formatting
-    const std::string reset = "\033[0m";
-    const std::string R = "\033[31m";
-    const std::string G = "\033[32m";
-	const std::string Y = "\033[33m";
-	const std::string B = "\033[34m";
+const std::string reset = "\033[0m";
+const std::string R = "\033[31m";
+const std::string G = "\033[32m";
+const std::string Y = "\033[33m";
+const std::string B = "\033[34m";
+const std::string M = "\033[35m";
+const std::string C = "\033[36m";
+
+class Form;
 
 class Bureaucrat {
 private:
@@ -26,22 +30,20 @@ public:
 	
 	class GradeTooHighException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too high! you cannot outrank the president!";
-        }
+        virtual const char* what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too low! you cannot be lower than a intern!";
-        }
+        virtual const char* what() const throw();
     };
 
     std::string getName() const;
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+
+	void signForm(Form &form);
 };
 
 #endif

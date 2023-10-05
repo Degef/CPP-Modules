@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:50 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/04 16:22:46 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 13:58:42 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,16 @@ void AForm::execute(const Bureaucrat & executor) const{
 		throw AForm::GradeTooLowException();
 	this->getExecuted();
 	return ;
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+	return "Grade is too low!";
+}
+
+const char* AForm::AlreadySignedException::what() const throw() {
+	return "Form is already signed!";
+}
+
+const char* AForm::NotSignedException::what() const throw() {
+	return "Can't be executed because form is not signed!";
 }

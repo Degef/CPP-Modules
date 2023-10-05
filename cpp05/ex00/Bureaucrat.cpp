@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "./includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -28,7 +28,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << M << "Bureaucrat destructor called" << reset << std::endl;
 }
 
 std::string Bureaucrat::getName() const {
@@ -61,8 +61,17 @@ void Bureaucrat::decrementGrade() {
 	}
 }
 
-// Overload of << operator for output
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
 	return os;
+}
+
+// GradeTooHighException class
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is too high! highest grade is 1";
+}
+
+// GradeTooLowException class
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is too low! lowest grade is 150";
 }

@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "./includes/Form.hpp"
 
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150) {
 	std::cout << "Form default constructor called" << std::endl;
@@ -27,7 +27,7 @@ Form& Form::operator=(const Form& other) {
 }
 
 Form::~Form() {
-	std::cout << "Form destructor called" << std::endl;
+	std::cout<< M << "Form destructor called" << reset << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {
@@ -59,6 +59,18 @@ void Form::beSigned(Bureaucrat& bureaucrat) {
 		throw Form::AlreadySignedException();
 	if ( _gradeToSign < bureaucrat.getGrade())
 		throw Form::GradeTooLowException();
-	std::cout << G << bureaucrat.getName() << " signed " << _name << reset << std::endl;
+	std::cout << C << bureaucrat.getName() << " signed " << _name << reset << std::endl;
 	_signed = true;
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade is too high! ";
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade is too low!";
+}
+
+const char* Form::AlreadySignedException::what() const throw() {
+	return "Form is already signed!";
 }

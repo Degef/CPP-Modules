@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:53 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/04 16:31:03 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 14:01:11 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,16 @@ void Bureaucrat::executeForm(AForm const &form) {
 	{
 		std::cerr << R << _name << " can't execute form because " << e.what() << reset << '\n';
 	}
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is too high! ";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is too low! ";
+}
+
+const char* Bureaucrat::FormNotSignedException::what() const throw() {
+	return "Form is not signed! ";
 }

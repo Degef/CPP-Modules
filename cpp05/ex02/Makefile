@@ -4,16 +4,16 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp
-OBJS = $(SRCS:.cpp=.o)
+
+OBJS = $(patsubst %.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
 all: $(TARGET)
 
-%.o: %.cpp
+$(OBJ_PATH)/%.o: %.cpp | $(OBJ_PATH)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(TARGET): $(OBJS) $(OBJ_PATH)
+$(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
-	mv $(OBJS) $(OBJ_PATH)
 	@printf "$(TARGET) Ready!\n"
 
 $(OBJ_PATH):
@@ -24,5 +24,6 @@ clean:
 
 fclean: clean
 	rm -f $(TARGET)
-	rm -f *.txt
+	rm -f *txt
+
 re: clean all

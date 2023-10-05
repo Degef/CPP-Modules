@@ -22,7 +22,7 @@ Intern&	Intern::operator=(const Intern& other) {
 }
 
 Intern::~Intern() {
-	std::cout << "Intern destructor called" << std::endl;
+	std::cout << M << "Intern destructor called" << reset << std::endl;
 }
 
 static AForm* createRobotomyRequestForm(std::string const &target) {
