@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:32 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/05 14:00:19 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 17:58:36 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ public:
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat& operator=(const Bureaucrat& other);
     ~Bureaucrat();
-	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 	
 	class GradeTooHighException : public std::exception {
     public:
@@ -63,5 +62,7 @@ public:
 	void signForm(AForm &form);
 	void executeForm(AForm const & form);
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif

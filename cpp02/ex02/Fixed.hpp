@@ -23,7 +23,6 @@ public:
     void setRawBits(int const raw);
 	float toFloat( void ) const;
 	int toInt( void ) const;
-	friend std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint);
 	bool operator>(const Fixed& other) const;
 	bool operator>=(const Fixed& other) const;
 	bool operator<(const Fixed& other) const;
@@ -46,3 +45,5 @@ public:
 	static Fixed& max(Fixed& first, Fixed& second);
 	static const Fixed& max(const Fixed& first, const Fixed& second);
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint);

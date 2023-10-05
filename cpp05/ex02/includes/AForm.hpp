@@ -6,7 +6,7 @@
 /*   By: Degef <dsium@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:27 by Degef             #+#    #+#             */
-/*   Updated: 2023/10/05 13:59:12 by Degef            ###   ########.fr       */
+/*   Updated: 2023/10/05 17:58:21 by Degef            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ public:
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
 	virtual ~AForm();
-	friend std::ostream& operator<<(std::ostream& os, const AForm& Aform);
 	
 	class GradeTooHighException : public std::exception {
 	public:
@@ -66,5 +65,7 @@ public:
 protected:
 	virtual void	getExecuted() const = 0;
 };
+
+std::ostream& operator<<(std::ostream& os, const AForm& Aform);
 
 #endif
