@@ -1,3 +1,5 @@
+#ifndef FIXED_HPP
+# define FIXED_HPP
 #include <iostream>
 #include <cmath>
 
@@ -6,14 +8,10 @@ private:
     int _value;
     static const int _fractionalBits = 8;
 
-public:
-//default constructor 
+public: 
     Fixed();
-//copy constructor 
     Fixed(const Fixed& other);
-// = operator overload
     Fixed& operator=(const Fixed& other);
-// destructor 
     ~Fixed();
 	Fixed(const int value);
 	Fixed(const float float_value);
@@ -47,4 +45,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint);
+
 #endif

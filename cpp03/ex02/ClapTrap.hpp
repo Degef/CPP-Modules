@@ -1,8 +1,8 @@
-#include <iostream>
-#include <string>
-
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
+
+#include <iostream>
+#include <string>
 
 class ClapTrap {
 protected:
