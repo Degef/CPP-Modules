@@ -8,8 +8,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::string input(argv[1]);
-
-    Converter::convert(input);
-
+	Converter converter(input);
+	
     return 0;
 }
