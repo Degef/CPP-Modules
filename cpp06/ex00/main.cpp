@@ -8,7 +8,12 @@ int main(int argc, char* argv[]) {
     }
 
     std::string input(argv[1]);
-	Converter converter(input);
-	
+	try {
+		Converter converter(input);
+		std::cout << converter;
+	} catch (std::exception& e) {
+		std::cerr << "Input is not a literal scalar type (char, int, float or double)." << std::endl;
+		return 1;
+	}
     return 0;
 }

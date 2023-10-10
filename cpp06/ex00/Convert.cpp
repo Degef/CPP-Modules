@@ -46,7 +46,7 @@ char	Converter::getAsChar() const {
 	return (this->_asChar);
 }
 
-void	Converter::ExtractType(const std::string& input) {
+Converter::Converter(const std::string& input) {
 	if (input.length() == 1 && !isdigit(input[0])) {
 		this->_type = CHAR;
 		this->_asChar = input[0];
@@ -55,7 +55,7 @@ void	Converter::ExtractType(const std::string& input) {
 		this->_type = NAN_;
 		this->_asFloat = std::numeric_limits<float>::quiet_NaN();
 	}
-	else if (input == "inf" || input == "inff") {
+	else if (input == "inf" || input == "inff" || input == "+inf" || input == "+inff") {
 		this->_type = INF_;
 		this->_asFloat = std::numeric_limits<float>::infinity();
 	}
@@ -77,116 +77,114 @@ void	Converter::ExtractType(const std::string& input) {
 	}
 }
 
-void Converter::FromChar(const std::string& input) {
-	(void)input;
-	std::cout << "char: '" << this->_asChar << "'" << std::endl;
-	std::cout << "int: " << static_cast<int>(this->_asChar) << std::endl;
-	std::cout << "float: " << static_cast<float>(this->_asChar) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(this->_asChar) << ".0" << std::endl;
+void Converter::DisplayFromChar(std::ostream& out) const {
+	out << "char: '" << this->_asChar << "'" << std::endl;
+	out << "int: " << static_cast<int>(this->_asChar) << std::endl;
+	out << "float: " << static_cast<float>(this->_asChar) << ".0f" << std::endl;
+	out << "double: " << static_cast<double>(this->_asChar) << ".0" << std::endl;
 }
 
-void Converter::FromInt(const std::string& input) {
-	(void)input;
-	std::cout << "char: ";
+void Converter::DisplayFromInt(std::ostream& out) const {
+	out << "char: ";
 	if (this->_asInt < 0 || this->_asInt > 127) {
-		std::cout << "impossible" << std::endl;
+		out << "impossible" << std::endl;
 	}
 	else if (this->_asInt < 32 || this->_asInt == 127) {
-		std::cout << "Non displayable" << std::endl;
+		out << "Non displayable" << std::endl;
 	}
 	else {
-		std::cout << "'" << static_cast<char>(this->_asInt) << "'" << std::endl;
+		out << "'" << static_cast<char>(this->_asInt) << "'" << std::endl;
 	}
-	std::cout << "int: " << this->_asInt << std::endl;
-	std::cout << "float: " << static_cast<float>(this->_asInt) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(this->_asInt) << ".0" << std::endl;
+	out << "int: " << this->_asInt << std::endl;
+	out << "float: " << static_cast<float>(this->_asInt) << ".0f" << std::endl;
+	out << "double: " << static_cast<double>(this->_asInt) << ".0" << std::endl;
 }
 
-void Converter::FromFloat(const std::string& input) {
-	(void)input;
-	std::cout << "char: ";
-	if (this->_asFloat < 0 || this->_asFloat > 127) {
-		std::cout << "impossible" << std::endl;
-	}
-	else if (this->_asFloat < 32 || this->_asFloat == 127) {
-		std::cout << "Non displayable" << std::endl;
-	}
-	else {
-		std::cout << "'" << static_cast<char>(this->_asFloat) << "'" << std::endl;
-	}
-	std::cout << "int: ";
-	if (this->_asFloat < std::numeric_limits<int>::min() || this->_asFloat > std::numeric_limits<int>::max()) {
-		std::cout << "impossible" << std::endl;
-	}
+void Converter::DisplayFromFloat(std::ostream& out) const {
+	out << "char: ";
+	if (this->_asFloat < 0 || this->_asFloat > 127)
+		out << "impossible" << std::endl;
+	else if (this->_asFloat < 32 || this->_asFloat == 127)
+		out << "Non displayable" << std::endl;
 	else
-		std::cout << static_cast<int>(this->_asFloat) << std::endl;
+		out << "'" << static_cast<char>(this->_asFloat) << "'" << std::endl;
+	out << "int: ";
+	if (this->_asFloat < std::numeric_limits<int>::min() || this->_asFloat > std::numeric_limits<int>::max())
+		out << "impossible" << std::endl;
+	else
+		out << static_cast<int>(this->_asFloat) << std::endl;
+	out << "float: ";
 	if (_asFloat == static_cast<int>(_asFloat))
-		std::cout << "float: " << _asFloat << ".0f" << std::endl;
+		out << _asFloat << ".0f" << std::endl;
 	else
-		std::cout << "float: " << _asFloat << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(_asFloat) << std::endl;
+		out << _asFloat << "f" << std::endl;
+	out << "double: ";
+	if (_asFloat == static_cast<int>(_asFloat))
+		out << static_cast<double>(_asFloat) << ".0" << std::endl;
+	else
+		out << static_cast<double>(_asFloat) << std::endl;
 }
 
-void Converter::FromDouble(const std::string& input) {
-	(void)input;
-	std::cout << "char: ";
-	if (this->_asDouble < 0 || this->_asDouble > 127) {
-		std::cout << "impossible" << std::endl;
-	}
-	else if (this->_asDouble < 32 || this->_asDouble == 127) {
-		std::cout << "Non displayable" << std::endl;
-	}
-	else {
-		std::cout << "'" << static_cast<char>(this->_asDouble) << "'" << std::endl;
-	}
-	std::cout << "int: ";
-	if (this->_asDouble < std::numeric_limits<int>::min() || this->_asDouble > std::numeric_limits<int>::max()) {
-		std::cout << "impossible" << std::endl;
-	}
-	else {
-		std::cout << static_cast<int>(this->_asDouble) << std::endl;
-	}
-	std::cout << "float: ";
-	if (this->_asDouble < std::numeric_limits<float>::min() || this->_asDouble > std::numeric_limits<float>::max()) {
-		std::cout << "impossible" << std::endl;
-	}
-	else {
-		std::cout << static_cast<float>(this->_asDouble) << "f" << std::endl;
-	}
-	std::cout << "double: " << this->_asDouble << std::endl;
+void Converter::DisplayFromDouble(std::ostream& out) const {
+	out << "char: ";
+	if (this->_asDouble < 0 || this->_asDouble > 127)
+		out << "impossible" << std::endl;
+	else if (this->_asDouble < 32 || this->_asDouble == 127)
+		out << "Non displayable" << std::endl;
+	else
+		out << "'" << static_cast<char>(this->_asDouble) << "'" << std::endl;
+
+	out << "int: ";
+	if (this->_asDouble < std::numeric_limits<int>::min() || this->_asDouble > std::numeric_limits<int>::max())
+		out << "impossible" << std::endl;
+	else 
+		out << static_cast<int>(this->_asDouble) << std::endl;
+
+	out << "float: ";
+	if (_asDouble == static_cast<int>(_asDouble))
+		out << static_cast<float>(this->_asDouble) << ".0f" << std::endl;
+	else
+		out << static_cast<float>(this->_asDouble) << "f" << std::endl;
+	out << "double: ";
+	if (_asDouble == static_cast<int>(_asDouble))
+		out << _asDouble << ".0" << std::endl;
+	else 
+		out << _asDouble << std::endl;
 }
 
-Converter::Converter(const std::string& input) {
-	this->ExtractType(input);
-
-	if (this->_type == CHAR) {
-		this->FromChar(input);
+std::ostream& operator<<(std::ostream& out, const Converter& obj) {
+	switch (obj.getType())
+	{
+		case CHAR:
+			obj.DisplayFromChar(out);
+			break;
+		case INT:
+			obj.DisplayFromInt(out);
+			break;
+		case FLOAT:
+			obj.DisplayFromFloat(out);
+			break;
+		case DOUBLE:
+			obj.DisplayFromDouble(out);
+			break;
+		case NAN_:
+			out << "char: impossible" << std::endl;
+			out << "int: impossible" << std::endl;
+			out << "float: nanf" << std::endl;
+			out << "double: nan" << std::endl;
+			break;
+		case INF_:
+			out << "char: impossible" << std::endl;
+			out << "int: impossible" << std::endl;
+			out << "float: " << obj.getAsFloat() << std::endl;
+			out << "double: inf" << std::endl;
+			break;
+		default:
+			out << "char: impossible" << std::endl;
+			out << "int: impossible" << std::endl;
+			out << "float: impossible" << std::endl;
+			out << "double: impossible" << std::endl;
+			break;
 	}
-	else if (this->_type == INT) {
-		this->FromInt(input);
-	}
-	else if (this->_type == FLOAT) {
-		this->FromFloat(input);
-	}
-	else if (this->_type == DOUBLE) {
-		this->FromDouble(input);
-	}
-	else if (this->_type == NAN_) {
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
-	}
-	else if (this->_type == INF_) {
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: inff" << std::endl;
-		std::cout << "double: inf" << std::endl;
-	}
-	else {
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: impossible" << std::endl;
-		std::cout << "double: impossible" << std::endl;
-	}
+	return (out);
 }

@@ -17,12 +17,6 @@ enum e_type {
 	INF_
 };
 
-enum error_type {
-	NO_ERROR,
-	IMPOSSIBLE,
-	NON_DISPLAYABLE
-};
-
 class Converter {
 public:
 	Converter();
@@ -37,11 +31,10 @@ public:
 	char		getAsChar() const;
 
     Converter(const std::string& input);
-	void ExtractType(const std::string& input);
-	void FromChar(const std::string& input);
-	void FromInt(const std::string& input);
-	void FromFloat(const std::string& input);
-	void FromDouble(const std::string& input);
+	void DisplayFromChar(std::ostream& out) const;
+	void DisplayFromInt(std::ostream& out) const;
+	void DisplayFromFloat(std::ostream& out) const;
+	void DisplayFromDouble(std::ostream& out) const;
 
 private:
 	int			_type;
@@ -49,8 +42,7 @@ private:
 	float		_asFloat;
 	double 		_asDouble;
 	char		_asChar;
-	int			_error[];
 };
 
-// std::ostream& operator<<(std::ostream& out, const Converter& op);
+std::ostream& operator<<(std::ostream& out, const Converter& op);
 #endif
