@@ -11,7 +11,6 @@ Converter::Converter(const Converter& copy) {
 }
 
 Converter::~Converter() {
-	std::cout << "Destructor called" << std::endl;
 	return ;
 }
 
@@ -61,25 +60,25 @@ void	Converter::ExtractType(const std::string& input) {
 		this->_asFloat = std::numeric_limits<float>::infinity();
 	}
 	else {
-		std::stringstream ss(input);
 		if (input.find('.') != std::string::npos) {
 			if (input.find('f') != std::string::npos) {
 				this->_type = FLOAT;
-				ss >> this->_asFloat;
+				this->_asFloat = std::strtof(input.c_str(), NULL);
 			}
 			else {
 				this->_type = DOUBLE;
-				ss >> this->_asDouble;
+				this->_asDouble = std::strtod(input.c_str(), NULL);
 			}
 		}
 		else {
 			this->_type = INT;
-			ss >> this->_asInt;
+			this->_asInt = std::stoi(input);
 		}
 	}
 }
 
 void Converter::FromChar(const std::string& input) {
+	(void)input;
 	std::cout << "char: '" << this->_asChar << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(this->_asChar) << std::endl;
 	std::cout << "float: " << static_cast<float>(this->_asChar) << ".0f" << std::endl;
@@ -87,6 +86,7 @@ void Converter::FromChar(const std::string& input) {
 }
 
 void Converter::FromInt(const std::string& input) {
+	(void)input;
 	std::cout << "char: ";
 	if (this->_asInt < 0 || this->_asInt > 127) {
 		std::cout << "impossible" << std::endl;
@@ -103,6 +103,7 @@ void Converter::FromInt(const std::string& input) {
 }
 
 void Converter::FromFloat(const std::string& input) {
+	(void)input;
 	std::cout << "char: ";
 	if (this->_asFloat < 0 || this->_asFloat > 127) {
 		std::cout << "impossible" << std::endl;
@@ -117,14 +118,17 @@ void Converter::FromFloat(const std::string& input) {
 	if (this->_asFloat < std::numeric_limits<int>::min() || this->_asFloat > std::numeric_limits<int>::max()) {
 		std::cout << "impossible" << std::endl;
 	}
-	else {
+	else
 		std::cout << static_cast<int>(this->_asFloat) << std::endl;
-	}
-	std::cout << "float: " << this->_asFloat << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(this->_asFloat) << std::endl;
+	if (_asFloat == static_cast<int>(_asFloat))
+		std::cout << "float: " << _asFloat << ".0f" << std::endl;
+	else
+		std::cout << "float: " << _asFloat << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(_asFloat) << std::endl;
 }
 
 void Converter::FromDouble(const std::string& input) {
+	(void)input;
 	std::cout << "char: ";
 	if (this->_asDouble < 0 || this->_asDouble > 127) {
 		std::cout << "impossible" << std::endl;
@@ -154,6 +158,7 @@ void Converter::FromDouble(const std::string& input) {
 
 Converter::Converter(const std::string& input) {
 	this->ExtractType(input);
+
 	if (this->_type == CHAR) {
 		this->FromChar(input);
 	}

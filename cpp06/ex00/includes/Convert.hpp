@@ -17,6 +17,12 @@ enum e_type {
 	INF_
 };
 
+enum error_type {
+	NO_ERROR,
+	IMPOSSIBLE,
+	NON_DISPLAYABLE
+};
+
 class Converter {
 public:
 	Converter();
@@ -43,6 +49,7 @@ private:
 	float		_asFloat;
 	double 		_asDouble;
 	char		_asChar;
+	int			_error[];
 };
 
 // std::ostream& operator<<(std::ostream& out, const Converter& op);
