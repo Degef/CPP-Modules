@@ -1,9 +1,9 @@
-TARGET = bureaucrat
+TARGET = a.out
 OBJ_PATH = obj
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = Base.cpp main.cpp 
 
 OBJS = $(patsubst %.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
@@ -26,4 +26,3 @@ fclean: clean
 	rm -f $(TARGET)
 
 re: clean all
-

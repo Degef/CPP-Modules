@@ -35,6 +35,7 @@ public:
 	void DisplayFromInt(std::ostream& out) const;
 	void DisplayFromFloat(std::ostream& out) const;
 	void DisplayFromDouble(std::ostream& out) const;
+	void DisplayFromUnknown(std::ostream& out, int flag) const;
 
 private:
 	int			_type;
