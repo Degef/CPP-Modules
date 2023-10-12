@@ -14,7 +14,8 @@ bool isdigit(const char& c) {
 
 bool isOnlyDigits(const std::string& input) {
 	for (size_t i = 0; i < input.length(); i++) {
-		if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f')
+		if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f' 
+			&& input[i] != '-' && input[i] != '+')
 			return (false);
 	}
 	return (true);
