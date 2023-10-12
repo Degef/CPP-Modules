@@ -1,4 +1,4 @@
-TARGET = a.out
+TARGET = base
 OBJ_PATH = obj
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

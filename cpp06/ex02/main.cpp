@@ -1,7 +1,7 @@
 #include "includes/Classes.hpp"
 
 int main() {
-    std::srand(static_cast<unsigned>(std::time(nullptr)));
+    std::srand(static_cast<unsigned>(std::time(NULL)));
 
 	for (int i = 0; i < 10; i++) {
 		Base* p = generate();

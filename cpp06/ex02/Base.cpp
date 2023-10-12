@@ -13,7 +13,7 @@ Base* generate() {
         case 2:
 			std::cout << "Instance generated is	 : C" << std::endl;
 			return new C();
-        default: return nullptr;
+        default: return NULL;
     }
 }
 
@@ -30,27 +30,24 @@ void identify(Base* p) {
         std::cout << "Unknown" << std::endl;
     }
 }
- 
+
 // Function to identify and print the type of the object referred to by p
 void identify(Base& p) {
 	std::cout << "Instance pointed by p is : ";
 	try {
-		A& a = dynamic_cast<A&>(p);
-		(void)a;
+		(void) dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 		return;
-	} catch (std::bad_cast& e) {}
+	} catch (std::exception& e) {}
 	try {
-		B& b = dynamic_cast<B&>(p);
-		(void)b;
+		(void) dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 		return;
-	} catch (std::bad_cast& e) {}
+	} catch (std::exception& e) {}
 	try {
-		C& c = dynamic_cast<C&>(p);
-		(void)c;
+		(void) dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 		return;
-	} catch (std::bad_cast& e) {}
+	} catch (std::exception& e) {}
 	std::cout << "Unknown" << std::endl;
 }

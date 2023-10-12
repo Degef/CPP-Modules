@@ -9,9 +9,9 @@ int main(int argc, char* argv[]) {
 
     std::string input(argv[1]);
 	try {
-		Converter test(input);
-		std::cout << test;
-	} catch (std::exception& e) {
+		ScalarConverter::convert(input);
+	}
+	catch (std::exception& e) {
 		std::cerr << "Input is not a literal scalar type (char, int, float or double)." << std::endl;
 		return 1;
 	}

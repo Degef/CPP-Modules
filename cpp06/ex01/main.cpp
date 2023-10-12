@@ -1,17 +1,21 @@
-#include "includes/serializer.hpp"
+#include "includes/Serializer.hpp"
 
 int main() {
     Data originalData(42);
 
     uintptr_t serializedPtr = Serializer::serialize(&originalData);
-
     Data* deserializedData = Serializer::deserialize(serializedPtr);
-	// std::cout << "Deserialized data: " << deserializedData->value1 << std::endl;
 
-    if (deserializedData == &originalData)
-        std::cout << "Serialization and deserialization successful." << std::endl;
-    else
-        std::cerr << "Serialization and deserialization failed." << std::endl;
+    if (deserializedData == &originalData) {
+        std::cout << G << "Serialization and deserialization successful." << reset << std::endl;
+	}
+    else {
+        std::cerr << R << "Serialization and deserialization failed." << reset << std::endl;
+	}
+	
+	std::cout << Y << "Original data: 	    " << originalData.value1 << std::endl;
+	std::cout << Y << "Serialized pointer: " << serializedPtr << std::endl;
+	std::cout << "Deserialized data:  " << deserializedData->value1 << std::endl;
 
     return 0;
 }

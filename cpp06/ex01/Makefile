@@ -1,9 +1,9 @@
-TARGET = a.out
+TARGET = serialize
 OBJ_PATH = obj
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = serializer.cpp main.cpp
+SRCS = main.cpp Serializer.cpp
 
 OBJS = $(patsubst %.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 

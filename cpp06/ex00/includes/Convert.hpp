@@ -17,33 +17,34 @@ enum e_type {
 	INF_
 };
 
-class Converter {
+class ScalarConverter {
 public:
-	Converter();
-	Converter(const Converter& copy);
-	~Converter();
-	Converter& operator=(const Converter& op);
 
-	int			getType() const;
-	int			getAsInt() const;
-	float		getAsFloat() const;
-	double		getAsDouble() const;
-	char		getAsChar() const;
+	// int			getType() const;
+	// int			getAsInt() const;
+	// float		getAsFloat() const;
+	// double		getAsDouble() const;
+	// char		getAsChar() const;
 
-    Converter(const std::string& input);
-	void DisplayFromChar(std::ostream& out) const;
-	void DisplayFromInt(std::ostream& out) const;
-	void DisplayFromFloat(std::ostream& out) const;
-	void DisplayFromDouble(std::ostream& out) const;
-	void DisplayFromUnknown(std::ostream& out, int flag) const;
+	static void Identify_type(const std::string& input);
+	static void convert(const std::string& input);
+	static void DisplayFromChar(std::ostream& out);
+	static void DisplayFromInt(std::ostream& out);
+	static void DisplayFromFloat(std::ostream& out);
+	static void DisplayFromDouble(std::ostream& out);
+	static void DisplayFromUnknown(std::ostream& out, int flag);
+
+	static int			_type;
+	static long			_asInt;
+	static float		_asFloat;
+	static double 		_asDouble;
+	static char			_asChar;
 
 private:
-	int			_type;
-	int			_asInt;
-	float		_asFloat;
-	double 		_asDouble;
-	char		_asChar;
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter& copy);
+	~ScalarConverter();
+	ScalarConverter& operator=(const ScalarConverter& op);
 };
 
-std::ostream& operator<<(std::ostream& out, const Converter& op);
 #endif
