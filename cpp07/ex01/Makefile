@@ -1,9 +1,9 @@
-TARGET = convert
+TARGET = iter
 OBJ_PATH = obj
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Convert.cpp
+SRCS = main.cpp
 
 OBJS = $(patsubst %.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
