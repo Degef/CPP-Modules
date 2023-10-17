@@ -1,6 +1,12 @@
 #ifndef Span_hpp
 #define Span_hpp
 
+//colors
+#define RESET		"\033[0m"			
+#define R			"\033[31m"
+#define G		"\033[32m"		
+#define Y		"\033[33m"
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -22,6 +28,7 @@ class Span {
 		int shortestSpan();
 		int longestSpan();
 		int size() const;
+		std::vector<int> getVector() const;
 
 		class FullException : public std::exception {
 			public:

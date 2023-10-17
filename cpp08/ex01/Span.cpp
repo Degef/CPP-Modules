@@ -52,6 +52,10 @@ int Span::size() const {
 	return _n;
 }
 
+std::vector<int> Span::getVector() const {
+	return _v;
+}
+
 const char *Span::FullException::what() const throw() {
 	return "Span is full";
 }
