@@ -1,4 +1,5 @@
 #include "includes/Span.hpp"
+#include <time.h>
 
 void testSingleAdd()
 {
@@ -26,12 +27,14 @@ void testSingleAdd()
 		std::cout << temp[i] << " ";
 }
 
-void testRangAdd()
+void testRangAddVector()
 {
 	Span sp = Span(50000);
 	std::vector<int> v(50000);
 	std::generate(v.begin(), v.end(), std::rand);
-	sp.addNumber(v.begin(), v.end()); 
+	std::vector<int>::iterator it = v.begin();
+	std::vector<int>::iterator ite = v.end();
+	sp.addNumberRange<std::vector<int> >(it, ite);
 	std::vector <int> temp;
 	temp = sp.getVector();
 	size_t i;
@@ -43,6 +46,18 @@ void testRangAdd()
 		}
 	if (i == temp.size())
 		std::cout << G << "Success! Values are the same" << RESET << std::endl;
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+}
+
+void testRangAddList()
+{
+	Span sp = Span(50000);
+	std::list<int> v(50000);
+	std::generate(v.begin(), v.end(), std::rand);
+	std::list<int>::iterator it = v.begin();
+	std::list<int>::iterator ite = v.end();
+	sp.addNumberRange<std::list<int> >(it, ite);
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 }
@@ -66,10 +81,13 @@ void Copytest()
 
 int main()
 {
+	srand(time(0));
 	std::cout << Y << "------------Single Add Test-------------" << RESET << std::endl;
 	testSingleAdd();
-	std::cout << Y << "\n------------Range Add Test-------------" << RESET << std::endl;
-	testRangAdd();
+	std::cout << Y << "\n------------Range Add Test1 Vector-------------" << RESET << std::endl;
+	testRangAddVector();
+	std::cout << Y << "\n------------Range Add Test2 List-------------" << RESET << std::endl;
+	testRangAddList();
 	std::cout << Y << "\n------------Copy Test-------------" << RESET << std::endl;
 	Copytest();
 	return 0;

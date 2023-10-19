@@ -1,6 +1,5 @@
-# ifndef MutantStack_hpp
-# define MutantStack_hpp
-
+#ifndef MutantStack_hpp
+#define MutantStack_hpp
 
 //color
 # define RESET		"\033[0m"

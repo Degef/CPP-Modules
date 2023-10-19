@@ -20,13 +20,6 @@ void Span::addNumber(int n) {
 	_v.push_back(n);
 }
 
-void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-	if (_v.size() + std::distance(begin, end) > _n)
-		throw FullException();
-	while (begin != end)
-		_v.push_back(*begin++);
-}
-
 int Span::shortestSpan() {
 	if (_v.size() <= 1)
 		throw NoSpanException();
@@ -46,10 +39,6 @@ int Span::longestSpan() {
 	std::vector<int> tmp(_v);
 	std::sort(tmp.begin(), tmp.end());
 	return tmp[tmp.size() - 1] - tmp[0];
-}
-
-int Span::size() const {
-	return _n;
 }
 
 std::vector<int> Span::getVector() const {

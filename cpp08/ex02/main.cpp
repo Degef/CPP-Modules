@@ -17,10 +17,15 @@ void testList()
 	std::list<int>::iterator ite = lst.end();
 	++it;
 	--it;
+	std::cout << G << "List: [";
 	while (it != ite)
 	{
 		std::cout << *it << ", ";
 		++it;
+		if (it != ite)
+			std::cout << ", ";
+		else
+			std::cout << "]" << RESET << std::endl;
 	}
 }
 
@@ -41,10 +46,15 @@ void testMutantStack()
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
+	std::cout << G << "MutantStack: [";
 	while (it != ite)
 	{
 		std::cout << *it << ", ";
 		++it;
+		if (it != ite)
+			std::cout << ", ";
+		else
+			std::cout << "]" << RESET << std::endl;
 	}
 	std::stack<int> s(mstack);
 }
@@ -68,10 +78,15 @@ void testStringMutantStack()
 	MutantStack<std::string>::const_iterator ite = mstack.end();
 	++it;
 	--it;
+	std::cout << G << "Strings: [";
 	while (it != ite)
 	{
-		std::cout << *it << " ";
+		std::cout << *it;
 		++it;
+		if (it != ite)
+			std::cout << ", ";
+		else
+			std::cout << "]" << RESET << std::endl;
 	}
 	std::stack<std::string> s(mstack);
 }
@@ -93,10 +108,15 @@ void testReverseIterator()
 	MutantStack<int>::reverse_iterator ite = mstack.rend();
 	++it;
 	--it;
+	std::cout << G << "Reverse: ["; 
 	while (it != ite)
 	{
-		std::cout << *it << ", ";
+		std::cout << *it;
 		++it;
+		if (it != ite)
+			std::cout << ", ";
+		else
+			std::cout << "]" << RESET << std::endl;
 	}
 	std::stack<int> s(mstack);
 }
@@ -105,12 +125,12 @@ int main()
 {
 	std::cout << Y << "--------------Test MutantStack-----------------" << RESET << std::endl;
 	testMutantStack();
-	std::cout << Y << "\n------------------Test List---------------------" << RESET << std::endl;
+	std::cout << Y << "------------------Test List-------------------" << RESET << std::endl;
 	testList();
-	std::cout << Y << "\n------------------Test String MutantStack---------------------" << RESET << std::endl;
+	std::cout << Y << "----------Test String MutantStack-------------" << RESET << std::endl;
 	testStringMutantStack();
-	std::cout << Y << "\n------------------Test Reverse Iterator---------------------" << RESET << std::endl;
+	std::cout << Y << "--------------Test Reverse Iterator-------------" << RESET << std::endl;
 	testReverseIterator();
-	std::cout << Y << "\n--------------------End------------------------" << RESET << std::endl;
+	std::cout << Y << "---------------------End-------------------------" << RESET << std::endl;
 	return 0;
 }

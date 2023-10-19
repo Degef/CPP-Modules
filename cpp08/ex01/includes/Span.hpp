@@ -11,6 +11,7 @@
 #include <vector>
 #include <algorithm>
 #include <exception>
+#include <list>
 
 class Span {
 	private:
@@ -24,10 +25,15 @@ class Span {
 		~Span();
 
 		void addNumber(int n);
-		void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		template <typename T>
+		void addNumberRange(typename T::iterator begin, typename T::iterator end) {
+			if (_v.size() + std::distance(begin, end) > _n)
+				throw FullException();
+			while (begin != end)
+				_v.push_back(*begin++);
+		}
 		int shortestSpan();
 		int longestSpan();
-		int size() const;
 		std::vector<int> getVector() const;
 
 		class FullException : public std::exception {
