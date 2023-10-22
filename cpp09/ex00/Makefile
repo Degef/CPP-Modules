@@ -1,9 +1,9 @@
-TARGET = a.out
+TARGET = btc
 OBJ_PATH = obj
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp BitcoinExchange.cpp
 
 OBJS = $(patsubst %.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
