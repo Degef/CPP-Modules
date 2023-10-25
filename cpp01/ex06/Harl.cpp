@@ -30,13 +30,16 @@ void Harl::complain(std::string level){
 	switch (int_level)
 	{
 	case 0:
-		Harl::debug();
+		debug();
+		// Intentional fallthrough
 	case 1:
-		Harl::info();
+		info();
+		// Intentional fallthrough
 	case 2:
-		Harl::warning();
+		warning();
+		// Intentional fallthrough
 	case 3:
-		Harl::error();
+		error();
 		break;
 	default:
 		std::cerr << "Invalid complain level, (DEBUG, INFO, WARNING, ERROR)" << std::endl;
