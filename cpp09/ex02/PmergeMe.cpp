@@ -1,6 +1,6 @@
 #include "includes/PmergeMe.hpp"
 
-int PmergeMe::insertionThreshold = 2;
+int PmergeMe::insertionThreshold = 4;
 
 PmergeMe::PmergeMe(char **argv, int argc): _lst(std::list<int>()), _vec(std::vector<int>()) {
     try {
