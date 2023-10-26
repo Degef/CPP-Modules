@@ -30,5 +30,3 @@ To explore my solutions or use them as a reference, simply navigate to the speci
 While this repository primarily showcases my solutions, I welcome any contributions, improvements, or suggestions. If you have any feedback or find any issues with the solutions, please feel free to reach out.
 
 Happy coding and learning!
-
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
