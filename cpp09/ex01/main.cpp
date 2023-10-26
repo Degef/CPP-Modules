@@ -15,7 +15,8 @@ int main(int argc, char **argv)
         tokens.push_back(token);
 
     std::deque<int> stack;
-	find_result(stack, tokens);
-    std::cout << "Result: " << stack.front() << std::endl;
+	if (find_result(stack, tokens) == 1)
+		return 1;
+	std::cout << "Result: " << stack.front() << std::endl;
     return 0;
 }

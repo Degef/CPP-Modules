@@ -35,21 +35,30 @@ public:
 	std::vector<int>	getVector(void);
 	void 	testList(std::list<int> lst);
 	void 	testVector(std::vector<int> vec);
-	// void 	insertionSortList(std::list<int>::iterator left, std::list<int>::iterator right);
-	// void 	insertionSortVector(std::vector<int>::iterator left, std::vector<int>::iterator right);
-	// void 	mergeList(std::list<int>::iterator left, std::list<int>::iterator middle, std::list<int>::iterator right);
-	// void 	mergeVector(std::vector<int>::iterator left, std::vector<int>::iterator middle, std::vector<int>::iterator right);
-	template <typename Iterator>
-	void insertionSort(Iterator left, Iterator right);
-	
-	template <typename Iterator>
-	void 	mergeSort(Iterator left, Iterator middle, Iterator right);
-
-	template <typename Iterator>
-	void Sort(Iterator left, Iterator right);
-	// void 	SortList(std::list<int>& lst, std::list<int>::iterator left, std::list<int>::iterator right);
-	// void 	SortVector(std::vector<int>& vec, std::vector<int>::iterator left, std::vector<int>::iterator right);
+	void 	insertionSortList(std::list<int>::iterator left, std::list<int>::iterator right);
+	void 	insertionSortVector(std::vector<int>::iterator left, std::vector<int>::iterator right);
+	void 	mergeList(std::list<int>::iterator left, std::list<int>::iterator middle, std::list<int>::iterator right);
+	void 	mergeVector(std::vector<int>::iterator left, std::vector<int>::iterator middle, std::vector<int>::iterator right);
+	void 	SortList(std::list<int>& lst, std::list<int>::iterator left, std::list<int>::iterator right);
+	void 	SortVector(std::vector<int>& vec, std::vector<int>::iterator left, std::vector<int>::iterator right);
 	void	printTime(void);
-};
+	template <typename Container>
+	bool is_sorted(const Container& c) {
+		typename Container::const_iterator it = c.begin();
+		if (it == c.end()) {
+			return true;
+		}
+		typename Container::value_type prev = *it;
+		++it;
+		while (it != c.end()) {
+			if (*it < prev) {
+				return false;
+			}
+			prev = *it;
+			++it;
+		}
+    return true;
+}
 
+};
 #endif
